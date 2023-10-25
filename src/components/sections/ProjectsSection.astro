@@ -1,38 +1,9 @@
 ---
 import ProjectCard from "../ProjectCard.astro";
 
-const projects = [
-    // {
-    //     name: 'Lust EP',
-    //     date: '2024',
-    //     tags: ['sound', 'er255', 'album'],
-    //     image: 'lust.png'
-    // },
-    {
-        name: 'Technobioform',
-        date: '2023',
-        tags: ['er255', 'sound', 'visuals'],
-        image: 'frame.png'
-    },
-    {
-        name: 'Memory Error',
-        date: '2023',
-        tags: ['sound', 'installation', 'electronics'],
-        image: 'bg2.jpg'
-    },
-    {
-        name: 'Rave Bioflyers',
-        date: '2023',
-        tags: ['graphics', 'biomaterials', 'research'],
-        image: 'flyer.png'
-    },
-    {
-        name: 'CRTotem',
-        date: '2022',
-        tags: ['sound', 'installation', 'graphics'],
-        image: 'crtotem.jpg'
-    },
-]
+import { API_MOCK } from "../../consts";
+
+const projects = API_MOCK.projects
 ---
 
 <section id="section_projects" class="w-screen h-fit pb-60 z-20 flex justify-center">
