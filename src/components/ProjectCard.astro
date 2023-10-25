@@ -1,0 +1,23 @@
+---
+const { project } = Astro.props
+---
+
+<div class="group w-80 h-fit flex flex-col">
+    <a href="./">
+        <div class="h-80">
+            <img src={`./covers/${project.image}`} class="w-full h-full object-cover">
+        </div>
+        
+        <!-- unsure: shadow-2xl -->
+        <div class="h-fit py-1 px-2 gap-4 flex flex-col justify-center font-mono tracking-wide text-sm blur-filter-hover bg-transparent group-hover:bg-basegray group-hover:text-white">
+            <h2>
+                {`${project.name} (${project.date})`}
+            </h2>
+            <ul class="flex flex-row flex-wrap gap-x-3 gap-y-1 w-full">
+                {project.tags.map((tag)=>
+                    <li>{`#${tag}`}</li>
+                )}
+            </ul>
+        </div>
+    </a>
+</div>

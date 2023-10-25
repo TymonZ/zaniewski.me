@@ -1,0 +1,18 @@
+---
+import { WEBSITE_NAME } from '../consts';
+import Head from '../components/Head.astro';
+import Navigation from '../components/Navigation'
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<Head title={WEBSITE_NAME} />
+	<body class="bg-basegray overflow-x-hidden">
+		<Navigation client:only="react"/>
+		<main class="flex flex-col">
+			<section class="h-screen w-screen">
+
+			</section>
+		</main>
+	</body>
+</html>

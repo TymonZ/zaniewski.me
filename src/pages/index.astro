@@ -1,0 +1,27 @@
+---
+import { WEBSITE_NAME } from '../consts';
+import Head from '../components/Head.astro';
+import GradientCursor from '../components/p5/GradientCursor';
+import HeroSection from '../components/sections/HeroSection.astro';
+import ProjectsSection from '../components/sections/ProjectsSection.astro'
+import Navigation from '../components/Navigation';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<Head title={WEBSITE_NAME} />
+	<body class="bg-basegray overflow-x-hidden">
+		<Navigation client:only="react" />
+		<main class="w-screen h-fit flex flex-col">
+			<HeroSection />
+			<ProjectsSection />
+			{/* background */}
+			<!-- <div class="absolute bottom-0 w-full h-screen z-10 bg-gradient-to-t from-lightgray"></div> -->
+			<GradientCursor sketchID={'wrapper'} client:only="react"/>
+		</main>
+		<footer class="absolute w-screen h-8 px-10 flex flex-row items-center justify-between bg-basegray text-white font-mono tracking-wide text-sm">
+			<div>made with love</div>
+			<div>(c) tymon zaniewski 2023</div>
+		</footer>
+	</body>
+</html>
