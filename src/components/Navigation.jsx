@@ -85,6 +85,7 @@ const NotClickedNavigation = ({ handleNavClick, desktopHidingThreshold }) => {
 const Navigation = ({ desktopHidingThreshold }) => {
 	const [navClicked, setNavClicked] = useState(false)
 	const handleNavClick = () => {
+		if (navClicked) desktopHidingThreshold = 0
 		setNavClicked(!navClicked)
 	}
 
