@@ -42,3 +42,22 @@
         }
     }
 }
+
+::-webkit-scrollbar {
+    width: 15px; /* remember to set in GradientCursor.jsx !! */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #dcdcdc; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #bcbcbc; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8; 
+}

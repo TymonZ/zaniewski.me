@@ -22,7 +22,7 @@ function GradientCursor({sketchID}) {
 		p5.setup = () => {
 			const parent = document.getElementById(sketchID)
 			SIZE = {
-				WIDTH: parent.clientWidth,
+				WIDTH: (parent.clientWidth + 15), // 15 = scrollbar size
 				HEIGHT: parent.clientHeight,
 			}
 			p5.createCanvas(SIZE.WIDTH, SIZE.HEIGHT, p5.WEBGL);
