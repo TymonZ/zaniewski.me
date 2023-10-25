@@ -1,13 +1,20 @@
 export const WEBSITE_NAME = 'tymon zaniewski'
 
+// type Project = {
+//     name: string;
+//     date: Date;
+//     tags: string[];
+//     image: URL;
+// }
+
 export const API_MOCK = {
     projects: [
-        {
-            name: 'Lust EP',
-            date: '2024',
-            tags: ['sound', 'er255', 'album'],
-            image: 'lust.png'
-        },
+        // {
+        //     name: 'Lust EP',
+        //     date: '2024',
+        //     tags: ['sound', 'er255', 'album'],
+        //     image: 'lust.png'
+        // },
         {
             name: 'Technobioform',
             date: '2023',

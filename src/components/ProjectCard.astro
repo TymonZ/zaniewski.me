@@ -1,23 +1,30 @@
 ---
+import slugify from '../scripts/slugify'
+
 const { project } = Astro.props
+const projectURL = slugify(project.name)
 ---
 
-<div class="group w-80 h-fit flex flex-col">
-    <a href="./">
-        <div class="h-80">
-            <img src={`./covers/${project.image}`} class="w-full h-full object-cover">
+<article class="group w-80 h-fit flex flex-col">
+        <div class="h-80 bg-lightgray group-hover:[&>*]:opacity-90">
+            <a href={`./projects/${projectURL}`}>
+                <img src={`./covers/${project.image}`} class="w-full h-full object-cover">
+            </a>
         </div>
         
-        <!-- unsure: shadow-2xl -->
+        <!-- unsure - shadow-2xl -->
         <div class="h-fit py-1 px-2 gap-4 flex flex-col justify-center font-mono tracking-wide text-sm blur-filter-hover bg-transparent group-hover:bg-basegray group-hover:text-white">
-            <h2>
-                {`${project.name} (${project.date})`}
+            <h2 class="hover:font-bold hover:underline">
+                <a href={`./projects/${projectURL}`}>
+                    {`${project.name} (${project.date})`}
+                </a>
             </h2>
             <ul class="flex flex-row flex-wrap gap-x-3 gap-y-1 w-full">
                 {project.tags.map((tag)=>
-                    <li>{`#${tag}`}</li>
+                    <li class="hover:font-bold hover:underline">
+                        <a href={`./tags/${tag}`} class="m-0 p-0">{`#${tag}`}</a>
+                    </li>
                 )}
             </ul>
         </div>
-    </a>
-</div>
+</article>
