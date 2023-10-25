@@ -89,13 +89,6 @@ const Navigation = ({ desktopHidingThreshold }) => {
 	const [navClicked, setNavClicked] = useState(false)
 	const handleNavClick = () => {
 		if (navClicked) desktopHidingThreshold = 0
-		if (navClicked) {
-			// Enable body scroll
-			document.body.style.overflow = 'auto';
-		} else {
-			// Disable body scroll
-			document.body.style.overflow = 'hidden';
-		}
 		setNavClicked(!navClicked)
 	}
 
