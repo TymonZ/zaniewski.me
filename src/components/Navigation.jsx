@@ -60,7 +60,7 @@ const NotClickedNavigation = ({ handleNavClick, desktopHidingThreshold }) => {
 
 	return (
 		<nav className={`pointer-events-none ${isVisible ? 'visible' : 'invisible'}`}>
-			<div className='z-40 fixed w-full py-5 px-8 flex flex-row justify-between text-l text-black font-medium font-body tracking-wide custom-filter'>
+			<div className='z-40 fixed w-full py-5 px-8 flex flex-row justify-between text-l text-basegray font-medium font-body tracking-wide sm:custom-filter'>
 				<h1 className=""><a className="pointer-events-auto hover:font-bold hover:drop-shadow-md" href="./">TYMON ZANIEWSKI</a></h1>
 				
 				{/* show on mobile sizes */}
@@ -77,7 +77,7 @@ const NotClickedNavigation = ({ handleNavClick, desktopHidingThreshold }) => {
 			</div>
 
 			{/* background */}
-			<div className='z-30 fixed w-full h-24 blur-filter-gradient-down'></div>
+			<div className='z-30 fixed w-full h-36 sm:h-24 blur-filter-gradient-down'></div>
 		</nav>
 	)
 }
