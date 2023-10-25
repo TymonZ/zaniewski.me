@@ -12,6 +12,6 @@ import Footer from '../components/Footer.astro';
 <html lang="en">
 	<Head title={WEBSITE_NAME} />
 	<body class="bg-lightgray overflow-x-hidden flex flex-col">
-		<Navigation hiding={0} client:only="react" />
+		<Navigation desktopHidingThreshold={0} client:only="react" />
 	</body>
 </html>

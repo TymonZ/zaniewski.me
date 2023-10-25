@@ -48,7 +48,6 @@ function GradientCursor({sketchID}) {
 		const drawGradient = () => {
 			mouseCoords = calculateMouseCoords(p5.mouseX, p5.mouseY)
 			if (p5.mouseX != 0 && p5.mouseY != 0) {
-				console.log([mouseCoords.x, mouseCoords.y])
                 gradientBrush(mouseCoords.x, mouseCoords.y, gradientRadius, gradientColor)
 			}
 			gradientRadius = gradientRadius + ((Math.random()*2)-1)

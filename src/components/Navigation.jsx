@@ -1,20 +1,49 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import { HiBars3, HiXMark } from "react-icons/hi2";
 
-const Navigation = ({ hiding }) => {
+const navigationLinks = [
+	{
+		name: 'ABOUT',
+		url: './about'
+	},
+	{
+		name: 'PROJECTS',
+		url: './projects'
+	},
+	{
+		name: 'CONTACT',
+		url: './contact'
+	},
+]
+
+const ClickedNavigation = ({ handleNavClick }) => {
+	return (
+		<nav className='z-40 fixed w-screen h-screen flex flex-col blur-filter text-basegray font-medium font-body tracking-wide'>
+			<div className='flex justify-between py-5 px-8 text-l'>
+				<h1><a className="pointer-events-auto hover:font-bold hover:drop-shadow-md" href="./">TYMON ZANIEWSKI</a></h1>
+				<HiXMark size='1.3em' onClick={handleNavClick}/>
+			</div>
+			<ul className='grow flex flex-col pt-40 gap-36 items-center text-xl'>
+					{navigationLinks.map((navLink) => 
+						<li key={navLink.url}><a className="pointer-events-auto hover:font-bold hover:drop-shadow-md" href={navLink.url}>{navLink.name}</a></li>
+					)}
+			</ul>
+		</nav>
+	)
+}
+
+const NotClickedNavigation = ({ handleNavClick, desktopHidingThreshold }) => {
 	let isAlwaysVisible
-
-	if (hiding == 0) {
-		isAlwaysVisible = true
-	} else {
-		isAlwaysVisible = false
-	}
+	if (desktopHidingThreshold == 0) { isAlwaysVisible = true }
+	else { isAlwaysVisible = false }
 
 	const [isVisible, setIsVisible] = useState(isAlwaysVisible)
 
+	// make visible when scrolled past threshold
 	useEffect(() => {
 		const handleScroll = () => {
 			if (!isAlwaysVisible) {
-				if (window.scrollY > hiding) {
+				if (window.scrollY > desktopHidingThreshold) {
 					setIsVisible(true)
 				} else {
 					setIsVisible(false)
@@ -30,20 +59,46 @@ const Navigation = ({ hiding }) => {
 	}, [])
 
 	return (
-		<nav className={isVisible ? 'visible pointer-events-none' : 'invisible pointer-events-none'}>
+		<nav className={`pointer-events-none ${isVisible ? 'visible' : 'invisible'}`}>
 			<div className='z-40 fixed w-full py-5 px-8 flex flex-row justify-between text-l text-black font-medium font-body tracking-wide custom-filter'>
 				<h1 className=""><a className="pointer-events-auto hover:font-bold hover:drop-shadow-md" href="./">TYMON ZANIEWSKI</a></h1>
-				<ul className="flex flex-row space-x-8">
-					<li><a className="pointer-events-auto hover:font-bold hover:drop-shadow-md" href="./about">ABOUT</a></li>
-					<li><a className="pointer-events-auto hover:font-bold hover:drop-shadow-md" href="./projects">PROJECTS</a></li>
-					<li><a className="pointer-events-auto hover:font-bold hover:drop-shadow-md" href="./contact">CONTACT</a></li>
+				
+				{/* show on mobile sizes */}
+				<button onClick={handleNavClick} className='pointer-events-auto'>
+					<HiBars3 size='1.3em' className='sm:hidden'/>
+				</button>
+
+				{/* show on desktop sizes */}
+				<ul className='hidden sm:flex sm:flex-row sm:gap-x-8 pointer-events-auto'>
+					{navigationLinks.map((navLink) => 
+						<li key={navLink.url}><a className="pointer-events-auto hover:font-bold hover:drop-shadow-md" href={navLink.url}>{navLink.name}</a></li>
+					)}
 				</ul>
 			</div>
 
 			{/* background */}
 			<div className='z-30 fixed w-full h-24 blur-filter-gradient-down'></div>
-        </nav>
+		</nav>
 	)
+}
+
+const Navigation = ({ desktopHidingThreshold }) => {
+	const [navClicked, setNavClicked] = useState(false)
+	const handleNavClick = () => {
+		setNavClicked(!navClicked)
+	}
+
+	if (navClicked) {
+		return <ClickedNavigation handleNavClick={handleNavClick}/>
+	}
+	else {
+		return (
+			<NotClickedNavigation 
+				handleNavClick={handleNavClick} 
+				desktopHidingThreshold={desktopHidingThreshold}
+			/>
+		)
+	}
 }
 
 export default Navigation
