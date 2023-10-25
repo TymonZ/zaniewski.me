@@ -12,14 +12,6 @@ import Footer from '../components/Footer.astro';
 <html lang="en">
 	<Head title={WEBSITE_NAME} />
 	<body class="bg-lightgray overflow-x-hidden flex flex-col">
-		<Navigation hiding={500} client:only="react" />
-		<main class="w-full h-fit flex flex-col sm:pb-36">
-			<HeroSection />
-			<ProjectsSection />
-		</main>
-		<Footer />
-
-		{/* background */}
-		<GradientCursor sketchID={'wrapper'} client:only="react"/>
+		<Navigation hiding={0} client:only="react" />
 	</body>
 </html>
