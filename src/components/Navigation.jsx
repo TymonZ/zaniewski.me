@@ -1,5 +1,6 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { HiBars3, HiXMark } from "react-icons/hi2";
+import { RemoveScroll } from 'react-remove-scroll'
 
 const navigationLinks = [
 	{
@@ -18,16 +19,18 @@ const navigationLinks = [
 
 const ClickedNavigation = ({ handleNavClick }) => {
 	return (
-		<nav className='z-40 fixed w-screen h-screen flex flex-col blur-filter text-basegray font-medium font-body tracking-wide'>
-			<div className='flex justify-between py-5 px-8 text-l'>
-				<h1><a className="pointer-events-auto hover:font-bold hover:drop-shadow-md" href="./">TYMON ZANIEWSKI</a></h1>
-				<HiXMark size='1.3em' onClick={handleNavClick}/>
-			</div>
-			<ul className='grow flex flex-col pt-40 gap-36 items-center text-xl'>
-					{navigationLinks.map((navLink) => 
-						<li key={navLink.url}><a className="pointer-events-auto hover:font-bold hover:drop-shadow-md" href={navLink.url}>{navLink.name}</a></li>
-					)}
-			</ul>
+		<nav className='z-40 fixed w-screen h-screen blur-filter text-basegray font-medium font-body tracking-wide'>
+			<RemoveScroll className='w-full h-full flex flex-col'>
+				<div className='flex justify-between py-5 px-8 text-l'>
+					<h1><a className="hover:font-bold hover:drop-shadow-md" href="./">TYMON ZANIEWSKI</a></h1>
+					<HiXMark size='1.3em' onClick={handleNavClick}/>
+				</div>
+				<ul className='grow flex flex-col pt-40 gap-36 items-center text-xl'>
+						{navigationLinks.map((navLink) => 
+							<li key={navLink.url}><a className="hover:font-bold hover:drop-shadow-md" href={navLink.url}>{navLink.name}</a></li>
+						)}
+				</ul>	
+			</RemoveScroll>
 		</nav>
 	)
 }
@@ -86,6 +89,13 @@ const Navigation = ({ desktopHidingThreshold }) => {
 	const [navClicked, setNavClicked] = useState(false)
 	const handleNavClick = () => {
 		if (navClicked) desktopHidingThreshold = 0
+		if (navClicked) {
+			// Enable body scroll
+			document.body.style.overflow = 'auto';
+		} else {
+			// Disable body scroll
+			document.body.style.overflow = 'hidden';
+		}
 		setNavClicked(!navClicked)
 	}
 
