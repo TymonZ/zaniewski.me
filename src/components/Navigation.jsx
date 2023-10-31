@@ -63,7 +63,7 @@ const NotClickedNavigation = ({ handleNavClick, desktopHidingThreshold }) => {
 
 	return (
 		<nav className={`pointer-events-none ${isVisible ? 'visible' : 'invisible'}`}>
-			<div className='z-40 fixed w-full py-5 px-8 flex flex-row justify-between text-l text-basegray font-medium font-body tracking-wide sm:custom-filter'>
+			<div className='z-40 fixed w-full py-5 px-5 sm:px-8 flex flex-row justify-between text-l text-basegray font-medium font-body tracking-wide sm:custom-filter'>
 				<h1 className=""><a className="pointer-events-auto hover:font-bold hover:drop-shadow-md" href="./">TYMON ZANIEWSKI</a></h1>
 				
 				{/* show on mobile sizes */}
