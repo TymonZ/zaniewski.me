@@ -1,0 +1,25 @@
+---
+import { WEBSITE_NAME } from '../../consts';
+import Head from '../../components/Head.astro';
+import Navigation from '../../components/Navigation';
+import Footer from '../../components/Footer.astro';
+
+const pageTitle = `projects | ${WEBSITE_NAME}`
+const allPosts = await Astro.glob('./*.md');
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<Head title={pageTitle} />
+	<body class="bg-lightgray overflow-x-hidden">
+		<Navigation desktopHidingThreshold={0} client:only="react" />
+		<div class="w-full h-fit min-h-screen flex flex-col bg-lightgray">
+			<main class="grow flex justify-center items-center">
+				<ul>
+					{allPosts.map((post) => <li><a href={post.url}>{post.frontmatter.title}</a></li>)}
+				</ul>
+			</main>
+			<Footer />  
+		</div>
+	</body>
+</html>
